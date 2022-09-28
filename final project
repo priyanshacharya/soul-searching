@@ -1,0 +1,505 @@
+ #include <stdio.h>
+#include<stdlib.h>
+#include<string.h>
+#include<ctype.h>
+
+
+struct person{
+
+    char name[50];
+    char yName[40];
+    char pName[40];
+    char gender[10];
+    char address[50];
+    char hobbies[1000];
+    char job[100];
+    char stu[50];
+ 
+};
+
+int check_ft(int c){
+	if(c== 1){
+		return 0;
+	}
+	else if (c== 2){
+		return 0;
+	}
+	else{
+		return 1;
+	}
+}
+
+
+int sumOfDigits(int num)
+{
+    int sum1 = 0;
+    while (num > 0) {
+        sum1 += (num % 10);
+        num /= 10;
+    }
+    return sum1;
+}
+
+
+void personality_test(struct person);
+void career_test(struct person);
+void friendship_test(struct person);
+
+int main()
+{
+	int n;
+	printf("\n\n\n\n\n\n\n\n\n\n\n\n\n");
+	printf("\n\t\t\t\t\t------*-------------*------*--------*------------*-------------*---------*-----\n");
+    printf("\t\t\t\t\t\t\t\tCreated By Priyanshya, Roza & Rakshya\n\n");
+    printf("\n\n\n\n\n\n\n\n\n\n\n\n\n");
+    
+    system("pause");
+    system("cls");
+	
+	printf("\n\n\n\n\n\n\n\n\n\n\n");
+    printf("\n\t\t\t\t\t***lets begin your soul searching journey***\n");
+    printf("\n\n\n\n\n\n\n\n\n\n\n");
+    printf("\n\n\n\n\n\n\n\n\n\n\n");
+    
+    system("pause");
+    system("cls");
+	
+	printf("\n\n\n\n\n\n\n\n\n\n\n");
+	printf("\n\t\t\t\t\t\t|||Please give your introduction|||\n");
+    printf("\n\n\n\n\n\n\n\n\n\n\n");
+
+    system("pause");
+    system("cls");
+  
+  	struct person st;
+  	printf("\nWhat is your name?\n");
+  	scanf("%[^\n]%*c", st.name);
+	fflush(stdin);
+  	printf("\nPlease mention your gender:\n");
+  	scanf("%[^\n]%*c", st.gender);
+	fflush(stdin);
+  	printf("\nWhere do you live?\n");
+ 	scanf("%[^\n]%*c", st.address);
+	fflush(stdin);
+ 	printf("\nWhat do you do for living?\n");
+  	scanf("%[^\n]%*c", st.job);
+	fflush(stdin);
+  	printf("\nwhat are your hobbies?\n");
+  	scanf("%[^\n]%*c", st.hobbies);
+	fflush(stdin);
+  	printf("\nif you are a student, \nwhat are you currently studying??\n");
+  	scanf("%[^\n]%*c", st.stu);
+	fflush(stdin);
+	
+    NEW_TEST:
+    system("cls");
+
+    printf("\n\n\n\t\t\t\We are doing some tests to explore your desires, interest and who you really are:\n\t\t\tWhich one whould you like to check first?\n");
+	printf("\n\t\t\t\t\tEnter your choice:\n");
+	printf("\n\n\n\n\t\t\t 1 : personality test\n\t\t\t 2 : career test\n\t\t\t 3 : friendship test\n\t\t\t 4 : exit:\n");
+	scanf("%d", &n);
+	fflush(stdin);
+
+	switch(n){
+		case 1:
+			personality_test(st);
+			goto NEW_TEST;
+			break;
+		case 2:
+			career_test(st);
+			goto NEW_TEST;
+			break;
+		case 3:
+			friendship_test(st);
+			goto NEW_TEST;
+            break;
+        case 4:
+            exit(101);
+            break;
+        default:
+            printf("\n\nWrong Choice!!");
+            goto NEW_TEST;
+	}
+}
+
+void personality_test(struct person st){
+	printf("\n\n\n\n\n\n\n\n\n\n\n");
+    printf("\t\t\t\t\t\tI will ask you some questions to take your personality test, I hope you will co-operate.");
+    printf("\n\n\n");
+    printf("\n\t\t\t\t\t\t\t\tHere are the questions:");
+    printf("\n\t\t\t\t\tPlease enter 1 for true and 2 for false");
+    printf("\n\n\n\n\n\n\n\n\n\n\n");
+    system("pause");
+    system("cls");
+	    
+    char a[20][150]={"\n\n>>I enjoy solitude\n",
+                    "\n>>I prefer one-on-one conversations to group activities\n",
+                    "\n>>I often prefer to express myself in writing\n",
+                    "\n>>I seem to care about wealth, fame, and status less than my peers\n",
+                    "\n>>I dislike small talk, but I enjoy talking in depth about topics that matter to me\n",
+                    "\n>>People tell me that I'm a good listener\n",
+                    "\n>>I'm not a big risk-taker\n",
+                    "\n>>I enjoy work that allows me to dive in with few interruptions\n",
+                    "\n>>I like to celebrate birthdays on a small scale, with only one or two close friends or family members\n",
+                    "\n>>People describe me as soft-spoken or mellow\n",
+                    "\n>>I prefer not to show or discuss my work with others until it's finished\n",
+                    "\n>>I dislike conflict\n",
+                    "\n>>I do my best work on my own\n",
+                    "\n>>I tend to think before I speak\n",
+                    "\n>>I feel drained after being out and about, even if I've enjoyed myself\n",
+                    "\n>>I often let calls go through to voice mail\n",
+                    "\n>>If you had to choose, I'd prefer a weekend with absolutely nothing to do to one with too many things scheduled\n",
+                    "\n>>I don't enjoy multitasking\n",
+                    "\n>>I can concentrate easily\n",
+                    "\n>>In classroom situations, I prefer lectures to seminars\n"};
+    int b[20],c,sum=0;
+    int check;
+
+    int i;
+    for(i=0;i<20;i++)
+    {
+        redo1:
+        printf("%s\n",a[i]);
+        printf("1)true\t2)false\n");
+        scanf("%d%*c",&b[i]);
+        c=b[i];
+        fflush(stdin);
+        check = check_ft(c);
+        if(check != 0)
+        {
+            printf("\nIncorrect Entry! Enter Again Correctly");
+            goto redo1;
+        }
+    }
+    for(i=0;i<20;i++)
+    {
+        sum=sum+b[i];
+    }
+    if(sum<=27)
+    {
+        system("pause");
+        system("cls");
+        printf("\n\n\n\n\n\n\n\n");
+        printf("\t\t\t\t\t\t\t\t_______________________\n");
+        printf("\t\t\t\t\t\t\t\t|                      |\n");
+		printf("\t\t\t\t\t\t\t\t| you are an introvert |\n");
+		printf("\t\t\t\t\t\t\t\t|                      |\n");
+		printf("\t\t\t\t\t\t\t\t|______________________|\n");
+		printf("\n\n\n\n\n\n");
+	}
+	else if(sum>=33)
+	{
+		system("pause");
+		system("cls");
+		printf("\n\n\n\n\n\n\n\n");
+		printf("\t\t\t\t\t\t\t\t_______________________\n");
+		printf("\t\t\t\t\t\t\t\t|                      |\n");
+		printf("\t\t\t\t\t\t\t\t| you are an extrovert |\n");
+		printf("\t\t\t\t\t\t\t\t|                      |\n");
+		printf("\t\t\t\t\t\t\t\t|______________________|\n");
+		printf("\n\n\n\n\n\n");
+	}
+	else{
+		system("pause");
+		system("cls");
+		
+		printf("\n\n\n\n\n\n\n\n");
+		printf("\t\t\t\t\t\t\t\t_______________________\n");
+		printf("\t\t\t\t\t\t\t\t|                      |\n");
+		printf("\t\t\t\t\t\t\t\t| you are an ambivert  |\n");
+		printf("\t\t\t\t\t\t\t\t|                      |\n");
+		printf("\t\t\t\t\t\t\t\t|______________________|\n");
+		printf("\n\n\n\n\n\n\n\n");
+		
+	}
+
+	FILE *fp;
+  	char pername[30];
+  	strcpy(pername,st.name);
+  	strcat(pername,".txt");
+	fp=fopen(pername,"a");
+	if(fp==NULL)
+	{
+	    printf("\nError");
+	    exit(1);
+	}
+	fprintf(fp,"\n*****Here,are the record of your test*****\n");
+	fprintf(fp,"\n>>>>>Your Introduction<<<<<\n\n");
+	fprintf(fp,"Name:%s\nGender:%s\nAddress:%s\nJob:%s\nHobbies:%s\nStudy:%s\n", st.name,st.gender,st.address,st.job,st.hobbies,st.stu);
+	
+	fprintf(fp,"\n*****Here are the questions and answers given by you*****\n");
+	
+  	for(i=0;i<20;i++){
+        fprintf(fp, "%s", a[i]);
+  		fprintf(fp,"1)true\t2)false\n");
+  		fprintf(fp,"Your Ans is %d\n", b[i]);
+	}
+	
+	fprintf(fp,"\n\n*****Here, is the result of your Personality Test:*****\n");
+	if(sum<=27){
+        fprintf(fp,"\n%s",">>>you are an introvert\n\n");
+    }
+    else if(sum>=33){
+        fprintf(fp,"\n%s",">>>you are an extrovert\n\n");
+    }
+    else{
+        fprintf(fp,"\n%s",">>>you are ambivert\n\n");
+    }
+   
+   	rewind(fp);
+   	fclose(fp);
+	//HOLDS THE CONSOLE SCREEN
+	printf("\n\n\nPress Any Key To Exit...");
+	getche();
+}
+
+void career_test(struct person st){
+  
+	printf("\n\n\n\n\n\n\n\n\n\n\n");
+    printf("\t\t\t\t\tI will ask you some questions to take your career test, I hope you will co-operate.");
+    printf("\n\n\n");
+    printf("\n\t\t\t\t\t\tHere are the questions:");
+    printf("\n\t\t\t\t\t\tPlease enter 1 to agree and 2 to disagree!");
+    printf("\n\n\n\n\n\n\n\n\n\n\n");
+    system("pause");
+    system("cls");
+    
+	char p[20][100]={"\n\n>>Test the quality of parts before shipment\n",
+						"\n>>Assemble products in a factory\n",
+						"\n>>Work on an offshore oil-drilling rig\n",
+						"\n>>Assemble electronic parts\n",
+						"\n>>Maintain employee records\n",
+						"\n>>Study the structure of the human body\n",
+						"\n>>Study animal behavior\n",
+						"\n>>Do research on plants or animals\n",
+						"\n>>Conduct biological research\n",
+						"\n>>Develop a new medical treatment or procedure\n",
+						"\n>>Conduct a musical choir\n",
+						"\n>>Direct a play\n",
+						"\n>>Design artwork for magazines\n",
+						"\n>>Write a song\n",
+						"\n>>Write books or plays\n",
+						"\n>>Give career guidance to people\n",
+						"\n>>Do volunteer work at a non-profit organization\n",
+						"\n>>Help people who have problems with alcohol\n",
+						"\n>>Teach an individual an exercise routine\n",
+						"\n>>Help people with family-related problems\n"};
+						
+	
+    int k, q[20],o, checkk;
+    int r=0,in=0,ar=0,s=0;
+	for(k=0;k<5;k++){
+		redoo1:
+        printf("%s",p[k]);
+        printf("1)Agree\t2)Disagree\n");
+        scanf("%d%*c",&q[k]);
+		fflush(stdin);
+	    checkk = check_ft(q[k]);
+		if(checkk != 0)
+		{
+			printf("\nIncorrect Entry! Enter Again Correctly");
+			goto redoo1;
+		}
+        if(q[k] == 1){
+            r = r + q[k];
+        }
+	}
+    for(k=5;k<10;k++){
+		redoo2:
+        printf("%s",p[k]);
+        printf("1)Agree\t2)Disagree\n");
+        scanf("%d%*c",&q[k]);
+		fflush(stdin);
+	    checkk = check_ft(q[k]);
+		if(checkk != 0)
+		{
+			printf("\nIncorrect Entry! Enter Again Correctly");
+			goto redoo2;
+		}
+        if(q[k] == 1){
+            in = in + q[k];
+        }
+	}
+	for(k=10;k<15;k++){
+		redoo3:
+        printf("%s",p[k]);
+        printf("1)Agree\t2)Disagree\n");
+        scanf("%d%*c",&q[k]);
+		fflush(stdin);
+	    checkk = check_ft(q[k]);
+		if(checkk != 0)
+		{
+			printf("\nIncorrect Entry! Enter Again Correctly");
+			goto redoo3;
+		}
+        if(q[k] == 1){
+            ar = ar + q[k];
+        }
+	}
+	for(k=15;k<20;k++){
+		redoo4:
+        printf("%s",p[k]);
+        printf("1)Agree\t2)Disagree\n");
+        scanf("%d%*c",&q[k]);
+		fflush(stdin);
+	    checkk = check_ft(q[k]);
+		if(checkk != 0)
+		{
+			printf("\nIncorrect Entry! Enter Again Correctly");
+			goto redoo4;
+		}
+        if(q[k] == 1){
+            s = s + q[k];
+        }
+	}
+    	system("pause");
+		system("cls");
+		
+		printf("\n\n\n\n\n\n\n\n");
+		printf("\t\t\t\t\t\t\t\t__________________________\n");
+		printf("\t\t\t\t\t\t\t\t|                         |\n");
+		printf("\t\t\t\t\t\t\t\t|    Realistic: %d        |\n",r);
+		printf("\t\t\t\t\t\t\t\t|    Investigation: %d     |\n",in);
+		printf("\t\t\t\t\t\t\t\t|      Artistic: %d       |\n",ar);
+		printf("\t\t\t\t\t\t\t\t|       Social: %d        |\n",s);
+		printf("\t\t\t\t\t\t\t\t|                         |\n");
+		printf("\t\t\t\t\t\t\t\t|_________________________|\n");
+		printf("\n\n\n\n\n\n\n\n");
+		
+		system("pause");
+		system("cls");
+	
+	printf("\n\n\t Occupations that fit a Realistic personality type \n");
+    printf("Ship architect \n Landscape architect \n News photographer \n Restaurant owner \n Glass blower \n Confectionery maker \n Musical instrument maker \n Tailor, seamstress \n\n");
+    fflush(stdin);
+  
+    printf("\n\n\t Occupations that fit a Investigative personality type \n");
+    printf("Investigative journalist \n Computer programmer \n Archeologist \n Forensic scientist \n Investigations analyst \n Medical researcher \n Detective \n Criminal attorney \n\n");
+    fflush(stdin);
+    
+    printf("\n\n\t Occupations that fit a Artistic personality type \n");
+    printf("Animator \n Art Teacher \n Cake Decorator \n Fashion Designer \n Graphic Designer \n Illustrator and Technical Illustrator \n Industrial Designer \n Makeup Artist \n\n");
+    fflush(stdin);
+
+    printf("\n\n\t Occupations that fit a Social personality type \n");
+    printf("City Manager \n Counselor \n Librarian \n Medical Assistant \n Physical Therapist \n Psychologist \n Registered Nurse \n Social Worker \n\n");
+    fflush(stdin);
+    
+    system("pause");
+	system("cls");
+    
+    FILE *fp;
+    char pername[30];
+    strcpy(pername,st.name);
+    strcat(pername,".txt");
+	fp=fopen(pername,"a");
+	if(fp==NULL)
+	{
+        printf("\nError");
+        exit(2);
+	}
+	fprintf(fp,"\t\t\t*****you have also checked your career******\n");
+	fprintf(fp,"\n\t\t\there, are the record of your answers according to questions\n");
+
+  //questions and ans
+  	for(k=0;k<20;k++){
+        fprintf(fp, "%s\n", p[k]);
+        fprintf(fp,"1)agree\t0)disagree\n");
+        fprintf(fp,"Your Answer is %d\n",q[k]);
+	}
+	fprintf(fp,"\n\n\t\t\t*****Here, are your results from my career test*****\n\n");
+    fprintf(fp,"Realistic : %d\n",r);
+    fprintf(fp,"Investigative : %d\n",in);
+    fprintf(fp,"Artistic : %d\n",ar);
+    fprintf(fp,"Social : %d\n",s);
+    
+    fprintf(fp,"\n\t***** Occupations that fit a realistic personality type*****\n \n");
+    fprintf(fp,"Ship architect \n Landscape architect \n News photographer \n Restaurant owner \n Glass blower \n Confectionery maker \n Musical instrument maker \n Tailor, seamstress \n\n");
+
+    fprintf(fp,"\n\t******Occupations that fit a Investigative personality type***** \n");
+    fprintf(fp,"Investigative journalist \n Computer programmer \n Archeologist \n Forensic scientist \n Investigations analyst \n Medical researcher \n Detective \n Criminal attorney \n\n");
+ 
+    fprintf(fp,"\n\t*****Occupations that fit a Artistic personality type***** \n");
+    fprintf(fp,"Animator \n Art Teacher \n Cake Decorator \n Fashion Designer \n Graphic Designer \n Illustrator and Technical Illustrator \n Industrial Designer \n Makeup Artist \n\n");
+
+    fprintf(fp,"\n\t***** Occupations that fit a Social personality type ******\n");
+    fprintf(fp,"City Manager \n Counselor \n Librarian \n Medical Assistant \n Physical Therapist \n Psychologist \n Registered Nurse \n Social Worker \n\n");
+	
+	fclose(fp);
+}
+	  
+      //FRIENDSHIP TEST
+void friendship_test(struct person st){
+    printf("\n\t\t\t\tDo you want to check if your friendship is strong or not???\n");
+    printf("\n\n\n\n\n\n\n\n\n\n\n");
+    int choose;
+    printf("1.Yes\n2.No\n");
+    scanf("%d%*c",&choose);
+    if(choose==1)
+    {
+        system("cls");
+        printf("\n\n\n\n\n\n\n\n\n\n\n");
+    }
+    printf("\t\t\t\t\t\tFriendship Calculator\n");
+   
+        
+    redo:
+    system("pause");
+    system("cls");
+    printf("Enter your name: ");
+    fflush(stdin);
+    gets(st.yName);
+    
+    printf("\nEnter your friend's name: ");
+    fflush(stdin);
+    gets(st.pName);
+            
+    int summ, summ1, z, choice;
+    float perc = 0;
+    summ = 0;
+    for (z = 0; z < (strlen(st.yName)); z++)
+    {
+        summ += tolower(st.yName[z]);
+    }
+    
+    summ1 = 0;
+    for (z = 0; z < (strlen(st.yName)); z++)
+    {
+        summ1 += tolower(st.pName[z]);
+    }
+    
+    perc = (sumOfDigits(summ) + sumOfDigits(summ1)) + 40;
+    if (perc > 100)
+        perc = 100;
+    
+    printf("Your friendship percentage is: %.02f\n\n", perc);
+    //file of friendship test     
+    FILE *fp;
+    char pername[30];
+    strcpy(pername,st.name);
+    strcat(pername,".txt");
+    fp=fopen(pername,"a");
+    if(fp==NULL)
+    {
+    printf("\nError");
+    exit(1);
+    }
+            
+    fprintf(fp,"\nhere,is the result of your frienship test:\n ");
+    fprintf(fp,"%s|%s",st.yName,st.pName);
+    fprintf(fp,"\n%.2f",perc);
+    
+    fclose(fp);
+    printf("\n\n\n\n\n\n\n\n\n\n\n");
+    printf("Do u want to check again ??\n");
+    printf("1.Yes\n2.No\n");
+    int check;
+    scanf("%d",&check);
+    if(check==1){
+        goto redo;
+    }
+    else{
+        return;
+        //exit(1);
+    }	
+}
